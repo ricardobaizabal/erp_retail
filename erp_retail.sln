@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "erp_retail", "..\erp_retail", "{5EDD8504-E2EB-419A-97F1-A70567F52311}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/erp_retail"
+		Debug.AspNetCompiler.PhysicalPath = "..\erp_retail\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\erp_retail\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/erp_retail"
+		Release.AspNetCompiler.PhysicalPath = "..\erp_retail\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\erp_retail\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55419"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/erp_retail"
+		Debug.AspNetCompiler.PhysicalPath = "..\erp_retail\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\erp_retail\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/erp_retail"
+		Release.AspNetCompiler.PhysicalPath = "..\erp_retail\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\erp_retail\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55419"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EDD8504-E2EB-419A-97F1-A70567F52311}.Debug|.NET.ActiveCfg = Debug|.NET
+		{5EDD8504-E2EB-419A-97F1-A70567F52311}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

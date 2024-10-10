@@ -1,0 +1,9 @@
+﻿<appSettings>
+	<add key="proveedores" value="0" />
+	<add key="usuarios" value="1" />
+	<add key="aspnet:MaxHttpCollectionKeys" value="100000" />
+	<add key="SIFEIUsuario" value="MUMR6604247X9" />
+	<add key="SIFEIContrasena" value="650976ba" />
+	<add key="SIFEIIdEquipo" value="ZDZmMzVlZjgtOWNlYi0xNjE3LWY3ZGUtNTJkODQ1MjIyMWFi" />
+	<add key="Telerik.Skin" value="Office2007"/>
+</appSettings>
