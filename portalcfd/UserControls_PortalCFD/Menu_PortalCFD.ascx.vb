@@ -41,7 +41,7 @@ Partial Class portalcfd_usercontrols_portalcfd_Menu_PortalCFD
                     RadMenu1.Items(6).Selected = True
                 Case "empleados.aspx", "asistencia.aspx"
                     RadMenu1.Items(6).Selected = True
-                Case "reportes.aspx", "asistencia.aspx", "inventarios.aspx", "cortes.aspx", "conteodiario.aspx", "entradas.aspx", "detallepedido.aspx", "reportedetalladoventas.aspx", "detalleventa.aspx", "acumulado.aspx", "detalleventatipopago.aspx"
+                Case "reportes.aspx", "asistencia.aspx", "inventarios.aspx", "cortes.aspx", "conteodiario.aspx", "entradas.aspx", "detallepedido.aspx", "reportedetalladoventas.aspx", "detalleventa.aspx", "acumulado.aspx", "detalleventatipopago.aspx", "tarjetas.aspx", "ventas_hielo.aspx"
                     RadMenu1.Items(7).Selected = True
                 Case "general.aspx", "programalealtad.aspx", "datos.aspx", "configuracion.aspx", "unidad.aspx", "claveproducto.aspx", "ciclosescolares.aspx", "gradosescolares.aspx", "gruposescolares.aspx", "sucursales.aspx", "pedidosplazo.aspx", "pos.aspx", "perfilpermisos.aspx"
                     RadMenu1.Items(8).Selected = True
