@@ -312,10 +312,12 @@
     <Content Include="portalcfd\reportes\conteodiarioenvases.aspx" />
     <Content Include="portalcfd\reportes\entradas.aspx" />
     <Content Include="portalcfd\reportes\presentaciones.aspx" />
+    <Content Include="portalcfd\reportes\tarjetas.aspx" />
     <Content Include="portalcfd\reportes\retiros.aspx" />
     <Content Include="portalcfd\reportes\vales.aspx" />
     <Content Include="portalcfd\reportes\ventas_detalle.aspx" />
     <Content Include="portalcfd\reportes\ventas_familia.aspx" />
+    <Content Include="portalcfd\reportes\ventas_hielo.aspx" />
     <Content Include="portalcfd\SAT\cadenaoriginal_2_0.xslt" />
     <Content Include="portalcfd\SAT\cadenaoriginal_3_0.xslt" />
     <Content Include="portalcfd\SAT\cadenaoriginal_3_2.xslt" />
@@ -1226,6 +1228,13 @@
       <DependentUpon>productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="portalcfd\reportes\tarjetas.aspx.designer.vb">
+      <DependentUpon>tarjetas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="portalcfd\reportes\tarjetas.aspx.vb">
+      <DependentUpon>tarjetas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="portalcfd\reportes\retiros.aspx.designer.vb">
       <DependentUpon>retiros.aspx</DependentUpon>
     </Compile>
@@ -1266,6 +1275,13 @@
     </Compile>
     <Compile Include="portalcfd\reportes\ventas_familia.aspx.vb">
       <DependentUpon>ventas_familia.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="portalcfd\reportes\ventas_hielo.aspx.designer.vb">
+      <DependentUpon>ventas_hielo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="portalcfd\reportes\ventas_hielo.aspx.vb">
+      <DependentUpon>ventas_hielo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="portalcfd\rh\empleados.aspx.designer.vb">
