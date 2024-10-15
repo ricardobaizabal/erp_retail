@@ -17,21 +17,35 @@ Public Class ventas_hielo
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            '
-            Dim objCat As New DataControl(1)
-            objCat.Catalogo(cmbCliente, "exec pMisClientes @cmd=1", 0)
-            objCat.Catalogo(cmbSucursal, "exec pCatalogos @cmd=11", 0)
-            objCat = Nothing
-            '
+            ' Establecer las fechas iniciales en el control de fechas
             fechaini.SelectedDate = Now
             fechafin.SelectedDate = Now
-            '
-            Call MuestraVentas()
-            '
+
+            ' Crear instancia de DataControl
+            Dim ObjCat As New DataControl(1)
+
+            ' Cargar todas las sucursales en el RadComboBox, ordenadas alfabéticamente por nombre
+            ObjCat.FillRadComboBox(cmbSucursal, "SELECT id, nombre FROM tblSucursal ORDER BY nombre")
+
+            ObjCat = Nothing
+        Else
+            ' Si es un postback, obtener los IDs seleccionados después de que el usuario ha hecho alguna selección
+            Dim selectedIds As New List(Of String)
+
+            ' Recorre los items seleccionados en el RadComboBox
+            For Each item As RadComboBoxItem In cmbSucursal.CheckedItems
+                selectedIds.Add(item.Value)
+            Next
+
+            ' Unir los IDs en una cadena separada por comas
+            Dim sucursalIdString As String = String.Join(",", selectedIds)
+
+            ' Llamar a MuestraReporte con los IDs seleccionados
+            Call MuestraVentas(sucursalIdString)
         End If
     End Sub
 
-    Private Sub MuestraVentas()
+    Private Sub MuestraVentas(sucursalIdString As String)
         '
         grdVentas.DataSource = Nothing
         grdVentas.DataBind()
@@ -41,7 +55,7 @@ Public Class ventas_hielo
         '
         Dim ObjData As New DataControl(1)
         Dim sql As String = ""
-        sql = "exec pVentas @cmd=2, @clienteid='" & cmbCliente.SelectedValue.ToString & "', @sucursalid='" & cmbSucursal.SelectedValue.ToString & "', @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @folio='" & txtTicket.Text & "', @producto='" & txtProducto.Text & "'"
+        sql = "exec pVentasHielo @cmd=1, @sucursalid='" & sucursalIdString & "', @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "'"
         ds = ObjData.FillDataSet(sql)
         grdVentas.DataSource = ds
         grdVentas.DataBind()
@@ -53,22 +67,33 @@ Public Class ventas_hielo
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
-        Call MuestraVentas()
+        ' Si es un postback, obtener los IDs seleccionados después de que el usuario ha hecho alguna selección
+        Dim selectedIds As New List(Of String)
+
+        ' Recorre los items seleccionados en el RadComboBox
+        For Each item As RadComboBoxItem In cmbSucursal.CheckedItems
+            selectedIds.Add(item.Value)
+        Next
+
+        ' Unir los IDs en una cadena separada por comas
+        Dim sucursalIdString As String = String.Join(",", selectedIds)
+
+        ' Llamar a MuestraReporte con los IDs seleccionados
+        Call MuestraVentas(sucursalIdString)
     End Sub
 
-    Private Sub grdVentas_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles grdVentas.NeedDataSource
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US")
-        Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
+    'Private Sub grdVentas_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles grdVentas.NeedDataSource
+    '    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US")
+    '    Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
 
-        Dim ObjData As New DataControl(1)
-        Dim sql As String = ""
-        sql = "exec pVentas @cmd=2, @clienteid='" & cmbCliente.SelectedValue.ToString & "', @sucursalid='" & cmbSucursal.SelectedValue.ToString & "', @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @folio='" & txtTicket.Text & "', @producto='" & txtProducto.Text & "'"
-        ds = ObjData.FillDataSet(sql)
-        grdVentas.DataSource = ds
-        ObjData = Nothing
+    '    Dim ObjData As New DataControl(1)
+    '    Dim sql As String = ""
+    '    sql = "exec pVentasHielo @cmd=1, @sucursalid='" & cmbSucursal.SelectedValue.ToString & "', @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & sucursalIdString & "'"
+    '    grdVentas.DataSource = ds
+    '    ObjData = Nothing
 
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX")
-        Thread.CurrentThread.CurrentUICulture = New CultureInfo("es-MX")
-    End Sub
+    '    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX")
+    '    Thread.CurrentThread.CurrentUICulture = New CultureInfo("es-MX")
+    'End Sub
 
 End Class

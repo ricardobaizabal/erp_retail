@@ -32,22 +32,13 @@ Partial Public Class ventas_hielo
     Protected WithEvents lblFiltros As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control cmbCliente.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents cmbCliente As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control cmbSucursal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cmbSucursal As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cmbSucursal As Global.Telerik.Web.UI.RadComboBox
 
     '''<summary>
     '''Control fechaini.
@@ -66,24 +57,6 @@ Partial Public Class ventas_hielo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents fechafin As Global.Telerik.Web.UI.RadDatePicker
-
-    '''<summary>
-    '''Control txtTicket.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtTicket As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control txtProducto.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtProducto As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control btnGenerate.

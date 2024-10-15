@@ -36,9 +36,9 @@ Partial Class _Default
                         ClienteValido = False
                     ElseIf row("error") = 0 Then
                         Session("appkey") = row("appKey").ToString
-                        'Session("conexion") = "Data Source=localhost; Initial Catalog=erp_retail_" & row("appKey") & "; User ID=sa; Password=Jupiter10!; Max Pool Size=200"
+                        Session("conexion") = "Data Source=localhost; Initial Catalog=erp_retail_" & row("appKey") & "; User ID=sa; Password=Jupiter10!; Max Pool Size=200"
                         'Session("conexion") = "Data Source=.\SQLEXPRESS; Initial Catalog=erp_retail_" & row("appKey") & "; Persist Security Info=True; Trusted_Connection=yes; Max Pool Size=200;"
-                        Session("conexion") = "Data Source=LINKIUMSERVER1; Initial Catalog=erp_retail_" & row("appKey") & "; User ID=sa; Password=Jupiter10!; Max Pool Size=200"
+                        'Session("conexion") = "Data Source=lk1.linkium.net,56881; Initial Catalog=erp_retail_" & row("appKey") & "; User ID=sa; Password=Jupiter10!; Max Pool Size=200"
                         Session("clienteid") = row("clienteid")
                         Session("userid") = row("usuarioid")
                         Session("usuario") = row("usuario")

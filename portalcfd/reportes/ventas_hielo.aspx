@@ -23,17 +23,12 @@
                 <td class="item">
                     <%--Seleccione el rango de fechas que desee consultar:<br /><br />--%>
                     <table width="100%" border="0" cellpadding="5">
-                        <tr>
-                            <td style="width: 10%">Cliente:</td>
-                            <td colspan="3">
-                                <asp:DropDownList ID="cmbCliente" runat="server" Width="95%"></asp:DropDownList>&nbsp;
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
+
                         <tr>
                             <td style="width: 10%">Sucursal:</td>
                             <td colspan="3">
-                                <asp:DropDownList ID="cmbSucursal" runat="server" Width="95%"></asp:DropDownList>&nbsp;
+                                <telerik:RadComboBox RenderMode="Lightweight" CssClass="item" ID="cmbSucursal" runat="server" CheckBoxes="true" Width="95%" Localization-CheckAllString="Seleccionar todo" Localization-ItemsCheckedString="proveedores seleccionados" Localization-AllItemsCheckedString="Todos seleccionados" EnableCheckAllItemsCheckBox="true" EmptyMessage="--Seleccione--">
+                                </telerik:RadComboBox>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -58,20 +53,7 @@
                             </td>
                             <td>&nbsp;</td>
                         </tr>
-                        <tr valign="top">
-                            <td style="width: 5%">Ticket:</td>
-                            <td style="width: 10%">
-                                <asp:TextBox ID="txtTicket" runat="server"></asp:TextBox>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr valign="top">
-                            <td style="width: 5%">Producto:</td>
-                            <td style="width: 10%">
-                                <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
-                            </td>
+                        
                             <td>
                                 <asp:Button ID="btnGenerate" runat="server" Text="Consultar" />
                             </td>
@@ -94,7 +76,7 @@
     <br />
     <fieldset>
         <legend style="padding-right: 6px; color: Black">
-            <asp:Image ID="imgPanel1" runat="server" ImageUrl="~/images/icons/reportes_03.jpg" ImageAlign="AbsMiddle" />&nbsp;<asp:Label ID="lblReportsLegend" Text="Ventas a detalle" runat="server" Font-Bold="true" CssClass="item"></asp:Label>
+            <asp:Image ID="imgPanel1" runat="server" ImageUrl="~/images/icons/reportes_03.jpg" ImageAlign="AbsMiddle" />&nbsp;<asp:Label ID="lblReportsLegend" Text="Ventas de Hielo" runat="server" Font-Bold="true" CssClass="item"></asp:Label>
         </legend>
         <table width="100%">
             <tr>
