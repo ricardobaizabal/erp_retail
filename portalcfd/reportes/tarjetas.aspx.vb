@@ -10,55 +10,82 @@ Partial Public Class tarjetas
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
         Me.Title = Resources.Resource.WindowsTitle
         lblReportsLegend.Text = Resources.Resource.lblReportsLegend & " - Reporte de ventas con tarjetas"
 
         If Not IsPostBack Then
+            ' Establecer las fechas iniciales en el control de fechas
             fechaini.SelectedDate = Now
             fechafin.SelectedDate = Now
-            lblSucursalesSeleccionadas.Text = ""
-            hfSucursalesIds.Value = ""
 
+            ' Crear instancia de DataControl
             Dim ObjCat As New DataControl(1)
-            ObjCat.Catalogo(cmbSucursal, "select id, nombre from tblSucursal order by nombre", 0, True)
+
+            ' Cargar todas las sucursales en el RadComboBox, ordenadas alfabéticamente por nombre
+            ObjCat.FillRadComboBox(cmbSucursal, "SELECT id, nombre FROM tblSucursal ORDER BY nombre")
+
             ObjCat = Nothing
+        Else
+            ' Si es un postback, obtener los IDs seleccionados después de que el usuario ha hecho alguna selección
+            Dim selectedIds As New List(Of String)
 
-            Call MuestraReporte()
+            ' Recorre los items seleccionados en el RadComboBox
+            For Each item As RadComboBoxItem In cmbSucursal.CheckedItems
+                selectedIds.Add(item.Value)
+            Next
 
+            ' Unir los IDs en una cadena separada por comas
+            Dim sucursalIdString As String = String.Join(",", selectedIds)
+
+            ' Llamar a MuestraReporte con los IDs seleccionados
+            Call MuestraReporte(sucursalIdString)
         End If
-
     End Sub
 
-    Private Sub reporteGrid_NeedDataSource(ByVal sender As Object, ByVal e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles reporteGrid.NeedDataSource
-        '
-        reporteGrid.CurrentPageIndex = 0
-        '
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US")
-        Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
-        '
-        Dim ObjData As New DataControl(1)
-        ds = ObjData.FillDataSet("exec pReporteTarjetas @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @sucursalid='" & hfSucursalesIds.Value & "'")
-        reporteGrid.DataSource = ds.Tables(0).DefaultView
-        ObjData = Nothing
-        '
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX")
-        Thread.CurrentThread.CurrentUICulture = New CultureInfo("es-MX")
-        '
-    End Sub
+
+    'Private Sub reporteGrid_NeedDataSource(ByVal sender As Object, ByVal e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles reporteGrid.NeedDataSource
+    '    '
+    '    reporteGrid.CurrentPageIndex = 0
+    '    '
+    '    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US")
+    '    Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
+    '    '
+
+    '    Dim ObjData As New DataControl(1)
+    '    ds = ObjData.FillDataSet("exec pReporteTarjetas @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @sucursalid='" & sucursalIdString & "'")
+    '    reporteGrid.DataSource = ds.Tables(0).DefaultView
+    '    ObjData = Nothing
+    '    '
+    '    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX")
+    '    Thread.CurrentThread.CurrentUICulture = New CultureInfo("es-MX")
+    '    '
+    'End Sub
 
     Private Sub btnGenerate_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnGenerate.Click
-        Call MuestraReporte()
+        ' Si es un postback, obtener los IDs seleccionados después de que el usuario ha hecho alguna selección
+        Dim selectedIds As New List(Of String)
+
+        ' Recorre los items seleccionados en el RadComboBox
+        For Each item As RadComboBoxItem In cmbSucursal.CheckedItems
+            selectedIds.Add(item.Value)
+        Next
+
+        ' Unir los IDs en una cadena separada por comas
+        Dim sucursalIdString As String = String.Join(",", selectedIds)
+
+        ' Llamar a MuestraReporte con los IDs seleccionados
+        Call MuestraReporte(sucursalIdString)
     End Sub
 
-    Private Sub MuestraReporte()
+    Private Sub MuestraReporte(sucursalIdString As String)
         '
         Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US")
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
         '
+
         Dim ObjData As New DataControl(1)
 
-        ds = ObjData.FillDataSet("exec pReporteTarjetas @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @sucursalid='" & hfSucursalesIds.Value & "'")
+        ds = ObjData.FillDataSet("exec pReporteTarjetas @fechaini='" & fechaini.SelectedDate.Value.ToShortDateString & "', @fechafin='" & fechafin.SelectedDate.Value.ToShortDateString & "', @sucursalid='" & sucursalIdString & "'")
         reporteGrid.DataSource = ds.Tables(0).DefaultView
         reporteGrid.DataBind()
 
@@ -134,26 +161,6 @@ Partial Public Class tarjetas
     '    End Using
     'End Sub
 
-    Protected Sub btnAgregarSucursal_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Verificar si se ha seleccionado una sucursal
-        If cmbSucursal.SelectedValue IsNot Nothing Then
-            ' Obtener el nombre de la sucursal seleccionada
-            Dim sucursalSeleccionada As String = cmbSucursal.SelectedItem.Text
-            Dim sucursalId As String = cmbSucursal.SelectedValue
 
-            ' Verificar si ya hay sucursales seleccionadas para evitar duplicados
-            If Not lblSucursalesSeleccionadas.Text.Contains(sucursalSeleccionada) Then
-                ' Si ya hay sucursales seleccionadas, las concatenamos con la nueva
-                If lblSucursalesSeleccionadas.Text <> "" Then
-                    lblSucursalesSeleccionadas.Text &= ", " & sucursalSeleccionada
-                    hfSucursalesIds.Value &= "," & sucursalId ' Concatenar los IDs
-                Else
-                    lblSucursalesSeleccionadas.Text = sucursalSeleccionada
-                    hfSucursalesIds.Value = sucursalId ' Iniciar con el primer ID
-                End If
-            End If
-        End If
-        'Call MuestraReporte()
-    End Sub
 
 End Class

@@ -29,34 +29,7 @@ Partial Public Class tarjetas
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cmbSucursal As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control btnAgregarSucursal.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnAgregarSucursal As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control lblSucursalesSeleccionadas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblSucursalesSeleccionadas As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control hfSucursalesIds.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents hfSucursalesIds As Global.System.Web.UI.WebControls.HiddenField
+    Protected WithEvents cmbSucursal As Global.Telerik.Web.UI.RadComboBox
 
     '''<summary>
     '''Control fechaini.

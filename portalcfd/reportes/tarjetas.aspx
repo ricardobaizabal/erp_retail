@@ -30,11 +30,14 @@
                         <tr>
                             <td style="width: 5%; font-weight: bold;">Sucursal: </td>
                             <td colspan="3">
-                                 <asp:DropDownList ID="cmbSucursal" runat="server"></asp:DropDownList>
-                                <asp:Button ID="btnAgregarSucursal" runat="server" Text="Agregar Sucursal" OnClick="btnAgregarSucursal_Click" />
+                                <%-- <asp:DropDownList ID="cmbSucursal1" runat="server"></asp:DropDownList>
+                                <asp:Button ID="btnAgregarSucursal" runat="server" Text="Agregar Sucursal" OnClick="btnAgregarSucursal_Click" />--%>
                                 <br />
-                                <asp:Label ID="lblSucursalesSeleccionadas" runat="server" Text=""></asp:Label>
-                                <asp:HiddenField ID="hfSucursalesIds" runat="server"/>
+                               <%-- <asp:Label ID="lblSucursalesSeleccionadas" runat="server" Text=""></asp:Label>--%>
+
+                                <telerik:RadComboBox RenderMode="Lightweight" CssClass="item" ID="cmbSucursal" runat="server" CheckBoxes="true" Width="95%" Localization-CheckAllString="Seleccionar todo" Localization-ItemsCheckedString="proveedores seleccionados" Localization-AllItemsCheckedString="Todos seleccionados" EnableCheckAllItemsCheckBox="true" EmptyMessage="--Seleccione--">
+                                </telerik:RadComboBox>
+                               <%-- <asp:HiddenField ID="hfSucursalesIds" runat="server"/>--%>
                                 <%--<asp:DropDownList ID="cmbSucursal" runat="server"></asp:DropDownList>--%>
                             </td>
                             <td>&nbsp;</td>
